@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Search</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icons/favicon.ico') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animate/animate.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/css-hamburgers/hamburgers.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animsition/css/animsition.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/daterangepicker/daterangepicker.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+</head>
+<body>
+
+
+	<div class="container-contact100">
+
+		<div class="wrap-contact100">
+			<form method="POST" action="{{ url_for('search') }}" enctype="multipart/form-data" class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Search
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="Query is required">
+					<input class="input100" type="text" name="query" placeholder="Search Query">
+					<span class="focus-input100-1"></span>
+					<span class="focus-input100-2"></span>
+				</div>
+
+				<div class="contact100-form-file">
+					<label>Gene dictionary file</label>
+					<input class="form-control-file" type="file" name="gene_dict">
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<input class="contact100-form-btn" type="submit">
+					</input>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+	<script src="{ url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+	<script src="{ url_for('static',filename='vendor/animsition/js/animsition.min.js')}}"></script>
+	<script src="{ url_for('static',filename='vendor/bootstrap/js/popper.js')}}"></script>
+	<script src="{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script src="{ url_for('static',filename='vendor/select2/select2.min.js')}}"></script>
+	<script src="{ url_for('static',filename='js/main.js')}}"></script>
+
+</body>
+</html>
