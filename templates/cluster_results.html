@@ -22,41 +22,21 @@
 	<div class="container-contact100">
 
 		<div class="wrap-contact100">
-			<form method="POST" action="{{ url_for('cluster') }}" enctype="multipart/form-data" class="contact100-form validate-form">
+			<form method="POST" action="{{ url_for('search') }}" enctype="multipart/form-data" class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					Clustering Parameters
+					Received {{ num_pmids }} results.
 				</span>
 
-				<div class="contact100-form-checkbox">
-					<input class="input-checkbox100" id="kmeans" type="checkbox" name="kmeans">
-					<label class="label-checkbox100" for="kmeans">
-						Use K-means
-					</label>
-				</div>
-
-				<div class="contact100-form-checkbox">
-					<input class="input-checkbox100" id="dbscan" type="checkbox" name="dbscan">
-					<label class="label-checkbox100" for="dbscan">
-						Use DBSCAN
-					</label>
-				</div>
-
-				<div class="wrap-input100 validate-input" data-validate="Hyperparameter is required">
-					<input class="input100" type="text" name="hyper" placeholder="Hyperparameter (k/eps)">
-					<span class="focus-input100-1"></span>
-					<span class="focus-input100-2"></span>
-				</div>
-
-				<div class="contact100-form-checkbox">
-					<input class="input-checkbox100" id="use_cache" type="checkbox" name="use_cache">
-					<label class="label-checkbox100" for="use_cache">
-						Use cached results, if possible
-					</label>
-				</div>
-
 				<div class="container-contact100-form-btn">
-					<input class="contact100-form-btn" type="submit" value="Cluster">
-					</input>
+					<a class="contact100-form-btn" href="{{ url_for('tag_genes') }}">
+					Get Tagged Genes
+					</a>
+				</div>
+				<br>
+				<div class="container-contact100-form-btn">
+					<a class="contact100-form-btn">
+					Start Relation Extraction
+					</a>
 				</div>
 			</form>
 		</div>

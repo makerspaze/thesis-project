@@ -1,5 +1,6 @@
 import os
 import requests
+import json
 import xmltodict
 
 class APIAdapter:
@@ -96,3 +97,39 @@ class APIAdapter:
 		parsed = xmltodict.parse(data.text)
 
 		return parsed['eSearchResult']['QueryTranslation']
+
+	@staticmethod
+	def run_gene_tagger(query):
+		folder_name = 'genes_tagger/'+query+'/'
+		os.mkdir(folder_name)
+
+		pmids = set(line.strip() for line in open('cache/' + query))
+		baseurl = "https://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/RESTful/tmTool.cgi/Gene/"
+		pmid_string = ""
+
+		main_count = 0
+		count = 0
+
+		for pmid in pmids:
+			pmid_string += pmid+","
+			count = count+1
+			if count == 100:
+				request_url = baseurl + pmid_string + "/JSON/"
+				data = requests.get(request_url)
+				data = data.text
+				data = data[:0] + '[' + data[1:]
+				data = data[:-2] + ']'
+				file = open(folder_name+str(main_count)+'.json', 'w')
+				json.dump(data,file)
+				count = 0
+				main_count+=1
+				pmid_string = ""
+
+		if pmid_string != "":
+			request_url = baseurl + pmid_string + "/JSON/"
+			data = requests.get(request_url)
+			data = data.text
+			data = data[:0] + '[' + data[1:]
+			data = data[:-1] + ']'
+			file = open(folder_name+str(main_count)+'.json', 'w')
+			json.dump(data,file)
