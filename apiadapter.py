@@ -99,7 +99,26 @@ class APIAdapter:
 		return parsed['eSearchResult']['QueryTranslation']
 
 	@staticmethod
+	def extract_and_save(parsed, folder_name):
+		for doc in parsed['collection']['document']:
+			pmid = doc['id']
+			annotations = []
+			for passage in doc['passage']:
+				if 'annotation' in passage:
+					for annot in passage['annotation']:
+						if type(annot) is not unicode:
+							annotations.append(annot['infon'][1]['#text'])
+			newobj = {}
+			newobj['pmid'] = pmid
+			newobj['annotations'] = annotations
+
+			file = open(folder_name+pmid, 'w')
+			json.dump(newobj, file)
+			
+
+	@staticmethod
 	def run_gene_tagger(query):
+		# use pubtator.py to populate the cache if this does not work.
 		folder_name = 'genes_tagger/'+query+'/'
 		os.mkdir(folder_name)
 
@@ -113,23 +132,22 @@ class APIAdapter:
 		for pmid in pmids:
 			pmid_string += pmid+","
 			count = count+1
-			if count == 100:
-				request_url = baseurl + pmid_string + "/JSON/"
+			if count == 20:
+				request_url = baseurl + pmid_string + "/BioC/"
 				data = requests.get(request_url)
-				data = data.text
-				data = data[:0] + '[' + data[1:]
-				data = data[:-2] + ']'
-				file = open(folder_name+str(main_count)+'.json', 'w')
-				json.dump(data,file)
+				try:
+					parsed = xmltodict.parse(data.text)
+					APIAdapter.extract_and_save(parsed,folder_name)
+				except:
+					print "nothing"
 				count = 0
-				main_count+=1
 				pmid_string = ""
 
 		if pmid_string != "":
-			request_url = baseurl + pmid_string + "/JSON/"
+			request_url = baseurl + pmid_string + "/BioC/"
 			data = requests.get(request_url)
-			data = data.text
-			data = data[:0] + '[' + data[1:]
-			data = data[:-1] + ']'
-			file = open(folder_name+str(main_count)+'.json', 'w')
-			json.dump(data,file)
+			try:
+				parsed = xmltodict.parse(data.text)
+				APIAdapter.extract_and_save(parsed,folder_name)
+			except:
+				print "nothing"

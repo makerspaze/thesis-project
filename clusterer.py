@@ -85,13 +85,6 @@ class Clusterer:
 		for rel_doc in self.related_docs:
 			relevant_docs.append(unicode(rel_doc))
 
-		# relevant_docs_temp = ["28963928", "29070037", "28798239", "28958132", "28371893", "29042658", "28961239", "28751006", "28704431", "28859141", "28934732", "28938008", "28618427", "28961241", "28495868", "28847716", "28849349", "28718374", "28698228", "28943392", "28819366", "28859117", "28926609", "28870920", "28814604", "28793234", "28807411", 28772035]
-		# relevant_docs = []
-		# for relevant_doc in relevant_docs_temp:
-		# 	relevant_docs.append(unicode(relevant_doc))
-		# print relevant_docs
-		# print "query_clusters_pmids"
-		# print query_clusters_pmids
 		random.shuffle(relevant_docs)
 
 		# learning vs testing split

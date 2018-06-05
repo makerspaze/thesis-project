@@ -76,7 +76,7 @@ class SearchDirector:
 		rel_docs = []
 
 		# download abstracts from pubmed in groups of 200
-		# APIAdapter.download_abstracts(self.get_search_term(), 200)
+		APIAdapter.download_abstracts(self.get_search_term(), 200)
 
 		# use the downloaded abstracts
 		abstracts_folder_name = APIAdapter.get_abstracts_foldername(self.get_search_term())

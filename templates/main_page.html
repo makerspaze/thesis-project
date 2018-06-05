@@ -34,8 +34,22 @@
 				</div>
 
 				<div class="contact100-form-file">
-					<label>Gene dictionary file</label>
+					<label>Dictionary file</label>
 					<input class="form-control-file" type="file" name="gene_dict">
+				</div>
+				<br>
+
+				<div class="contact100-form-checkbox" style="padding-bottom: 12px;">
+					<input class="input-checkbox100" id="dbscan" type="checkbox" name="dbscan">
+					<label class="label-checkbox100" for="dbscan">
+						Use as gene dictionary
+					</label>
+				</div>
+				<div class="contact100-form-checkbox" style="padding-bottom: 12px;">
+					<input class="input-checkbox100" id="dbscan" type="checkbox" name="dbscan">
+					<label class="label-checkbox100" for="dbscan">
+						Use as PMID dictionary
+					</label>
 				</div>
 
 				<div class="container-contact100-form-btn">
@@ -50,12 +64,12 @@
 
 	<div id="dropDownSelect1"></div>
 
-	<script src="{ url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-	<script src="{ url_for('static',filename='vendor/animsition/js/animsition.min.js')}}"></script>
-	<script src="{ url_for('static',filename='vendor/bootstrap/js/popper.js')}}"></script>
-	<script src="{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-	<script src="{ url_for('static',filename='vendor/select2/select2.min.js')}}"></script>
-	<script src="{ url_for('static',filename='js/main.js')}}"></script>
+	<script src="{{ url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{ url_for('static',filename='vendor/animsition/js/animsition.min.js')}}"></script>
+	<script src="{{ url_for('static',filename='vendor/bootstrap/js/popper.js')}}"></script>
+	<script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script src="{{ url_for('static',filename='vendor/select2/select2.min.js')}}"></script>
+	<script src="{{ url_for('static',filename='js/main.js')}}"></script>
 
 </body>
 </html>

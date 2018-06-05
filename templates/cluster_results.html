@@ -24,19 +24,24 @@
 		<div class="wrap-contact100">
 			<form method="POST" action="{{ url_for('search') }}" enctype="multipart/form-data" class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					Received {{ num_pmids }} results.
+					Received {{ num_pmids }} unique PMIDs.
 				</span>
-
+				<div style="text-align: center;">
 				<div class="container-contact100-form-btn">
 					<a class="contact100-form-btn" href="{{ url_for('tag_genes') }}">
 					Get Tagged Genes
 					</a>
 				</div>
-				<br>
 				<div class="container-contact100-form-btn">
-					<a class="contact100-form-btn">
+					<a class="contact100-form-btn" href="">
 					Start Relation Extraction
 					</a>
+				</div>
+				<div class="container-contact100-form-btn">
+					<a class="contact100-form-btn" href="{{ url_for('data_viz') }}">
+					Go to Data Visualization
+					</a>
+				</div>
 				</div>
 			</form>
 		</div>

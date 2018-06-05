@@ -1,0 +1,6 @@
+requests
+xmltodict
+itertools
+numpy
+scipy
+sklearn

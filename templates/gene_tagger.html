@@ -19,12 +19,18 @@
 <body>
 
 
-	<div class="container-contact100">
+	<div class="container">
 		<table class="table table-hover">
-		<thead></thead>
+		<thead>
+			<td>PMID</td>
+			<td>Title</td>
+			<td>Genes</td>
+		</thead>
 		<tbody>
 		{% for tag in tagged_genes %}
-		<tr><td>{{ tag['sourceid'] }}</td></tr>
+		<tr><td>{{ tag['pmid'] }}</td>
+		<td>{{ tag['title'] }}</td>
+		<td>{% for gene in tag['annotations'] %}<a href="https://www.ncbi.nlm.nih.gov/gene/{{ gene }}" target="_blank">{{ gene }}</a> {% endfor %}</td></tr>
 		{% endfor %}
 		</tbody>
 		</table>
